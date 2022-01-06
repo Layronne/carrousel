@@ -1,32 +1,41 @@
-class carousel {
-constructor (element, options = {}) {
-    this.element = element;
-    this.options = object.assign({}, {
-        slidesToScroll: 1,
-        slidesVisibile: 1
-        }, options)
-       let root = document.createElement('div')
-       let container = this.createDivWithClass('carousel__container')
-       root.appendChild(container)
-       this.element.appendChild(root)
-    }
-    
-    createDivWithClass (className) {
-        let div = document.createElement('div')
-        div.setAttribute('class', className)
-        return div
+const items = document.querySelectorAll( 'img' );
+const nbSlide = items.length;
+const suivant = document.querySelector('.right');
+const precedent = document.querySelector('.left');
+let count = 0;
+
+function slideSuivant() {
+    items[count].classList.remove('active');
+
+    if(count < nbSlide - 1){
+        count++;
+    } else {
+        count = 0;
     }
 
-
+    items[count].classList.add('active');
+    console.log(count);
 }
+suivant.addEventListener('click', slideSuivant)
 
+function slidePrecedent() {
+    items[count].classList.remove('active');
+    
+    if(count > 0){
+        count--;
+    } else {
+        count = nbSlide - 1;
+    }
 
-document.addEventListener('DOMContentLoaded', function () {
-    new carousel( document.querySelector('#Carousel1'), {
-        slidesToScroll: 1,
-        slidesVisibile: 3,
-    }) 
+    items[count].classList.add('active');
+}
+precedent.addEventListener('click', slidePrecedent)
 
-
-})
-
+function keyPress(e) {
+    if(e.keyCode === 37){
+        slidePrecedent();
+    } else if (e.keyCode === 39){
+        slideSuivant()
+    }
+}
+document.addEventListener('keydown', keyPress)
