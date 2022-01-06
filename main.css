@@ -1,0 +1,39 @@
+body {
+  background-color: #2e2e2e;
+}
+
+.carousel {
+  align-items: center;
+}
+
+.image1 {
+  max-width: 50%;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.button1 {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.carousel {
+  position: relative;
+}
+
+.carousel__container::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.carousel__item {
+  float: left;
+}
+
+/*# sourceMappingURL=main.css.map */
